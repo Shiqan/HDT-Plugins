@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Setup NuGet
+      uses: nuget/setup-nuget@v1
+
+    - name: Restore Packages
+      run: nuget restore ./src/HDT.Plugins.sln
+
+    - name: Build Solution
+      run: |
+        msbuild.exe ./src/HDT.Plugins.sln /p:GithubBuild="true" /p:Platform="Any CPU" /p:Configuration="Release"
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with: 
+        name: artifact
+        path: ./src/HDT.Plugins/bin/Release/HDT.Plugins.dll
+          
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:    
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Download Artifact
+      uses: actions/download-artifact@v3
+      id: download
+      with:
+        name: artifact
+        
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ${{steps.download.outputs.download-path}}/HDT.Plugins.Mordresh.dll
+        tag: ${{ github.ref }}

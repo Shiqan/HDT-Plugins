@@ -1,0 +1,31 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+
+defaults:
+  run:
+    shell: powershell
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Setup NuGet
+      uses: nuget/setup-nuget@v1
+
+    - name: Restore Packages
+      run: nuget restore ./src/HDT.Plugins.sln
+
+    - name: Build Solution
+      run: |
+        msbuild.exe ./src/HDT.Plugins.sln /p:GithubBuild="true" /p:Platform="Any CPU" /p:Configuration="Release"
