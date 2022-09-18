@@ -67,6 +67,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetDir)$(ProjectName).*" "C:\Users\ferro\AppData\Roaming\HearthstoneDeckTracker\Plugins"</PostBuildEvent>
+    <PostBuildEvent Condition="'$(GithubBuild)'!='true'">copy "$(TargetDir)$(ProjectName).*" "C:\Users\ferro\AppData\Roaming\HearthstoneDeckTracker\Plugins"</PostBuildEvent>
   </PropertyGroup>
 </Project>
