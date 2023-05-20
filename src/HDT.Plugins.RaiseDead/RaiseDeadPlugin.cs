@@ -31,7 +31,8 @@ namespace HDT.Plugins.RaiseDead
 
             var plugin = new RaiseDeadTracker(_widget);
 
-            GameEvents.OnInMenu.Add(plugin.InMenu); 
+            GameEvents.OnInMenu.Add(plugin.OnInMenu);
+            GameEvents.OnGameStart.Add(plugin.OnGameStart);
             GameEvents.OnPlayerPlayToGraveyard.Add(plugin.OnPlayerPlayToGraveyard);
             GameEvents.OnPlayerHandMouseOver.Add(plugin.OnMouseOver);
         }

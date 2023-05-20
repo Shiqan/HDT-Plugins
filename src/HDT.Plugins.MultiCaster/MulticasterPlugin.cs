@@ -18,7 +18,7 @@ namespace HDT.Plugins.Multicaster
 
         public MenuItem MenuItem => null;
 
-        public string Name => "Multicaster counter";
+        public string Name => "Multicaster Counter";
 
         public void OnButtonPress()
         {
@@ -31,9 +31,8 @@ namespace HDT.Plugins.Multicaster
 
             var plugin = new MulticasterTracker(_widget);
 
-            GameEvents.OnInMenu.Add(plugin.InMenu);
+            GameEvents.OnInMenu.Add(plugin.OnInMenu);
             GameEvents.OnGameStart.Add(plugin.OnGameStart);
-
             GameEvents.OnPlayerPlay.Add(plugin.OnPlayerPlay);
             GameEvents.OnPlayerHandMouseOver.Add(plugin.OnMouseOver);
         }

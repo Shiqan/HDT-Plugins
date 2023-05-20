@@ -25,13 +25,7 @@ namespace HDT.Plugins.Multicaster
         /// <summary>
         /// 
         /// </summary>
-        internal void InMenu()
-        {
-            if (Config.Instance.HideInMenu)
-            {
-                _widget.Hide();
-            }
-        }
+        internal void OnInMenu() => _widget.Hide();
 
         /// <summary>
         /// Reset on when a new game starts

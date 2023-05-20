@@ -1,6 +1,5 @@
 ﻿using Hearthstone_Deck_Tracker;
 using Hearthstone_Deck_Tracker.Hearthstone;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using static HearthDb.CardIds;
@@ -26,18 +25,12 @@ namespace HDT.Plugins.RaiseDead
         /// <summary>
         /// 
         /// </summary>
-        internal void InMenu()
-        {
-            if (Config.Instance.HideInMenu)
-            {
-                _widget.Hide();
-            }
-        }
+        internal void OnInMenu() => _widget.Hide();
 
         /// <summary>
         /// Reset on when a new game starts
         /// </summary>
-        internal void GameStart()
+        internal void OnGameStart()
         {
             _widget.Hide();
 

@@ -2,7 +2,7 @@
 
 [![Build](https://github.com/Shiqan/hdt-plugins/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/Shiqan/hdt-plugins/actions/workflows/build.yml)
 
-A collections of plugins for [Hearthstone Deck Tracker](https://github.com/Epix37/Hearthstone-Deck-Tracker).
+A collections of plugins for [Hearthstone Deck Tracker](https://github.com/Epix37/Hearthstone-Deck-Tracker). More available plugins can be found [here](https://github.com/HearthSim/Hearthstone-Deck-Tracker/wiki/Available-Plugins).
 
 
 ### Install
